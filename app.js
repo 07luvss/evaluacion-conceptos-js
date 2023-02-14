@@ -144,55 +144,92 @@ for(let i = 0; i < carrito.length; i++){
 console.log("Total a facturar: $" + precioTotal)
 console.log("*****************************");
 
+
 -----------------------------------------------------------------------------------
 7) Modifica el punto anterior para que, antes de finalizar la carga pregunte si queremos editar. Si responde "SI" entonces.
 a) Que indique con un número el ítem que quiere modificar. 
 b) Se reemplazara el nombre del artículo pero no la cantidad y el costo. 
 c) Una vez finalizado el reemplazo se preguntará si quiere seguir modificando. En caso afirmativo pasaremos al 
 punto (a) y sino se mostrará el punto (6 - e)
+*/
 
 let carrito = []
 let articulos; 
-let precio;
-let unidades;
-let costoTotal = 0;
-let numeroItem = carrito
-
-let ingreso = prompt("desea ingresar un articulo? si - no");
+let costoUn;
+let cantidad;
+let precioTotal = 0;
+let numeroItem
 
 do{
-        articulos = prompt("ingresa tu articulo");
-        console.log(articulos);
-        carrito.push(articulos)
-        console.log(carrito);
-        precio = parseInt(prompt("ingresa precio"));
-        unidades = parseInt(prompt("ingresa unidades"));
-        costoTotal = costoTotal + (parseInt(precio) * parseInt(unidades))
-        ingreso = prompt("desea seguir ingresando");
-
-    }while(ingreso !== "no"){
-        consulta = prompt("desea editar algun articulo? presiona 0")
-        console.log(`lista de articulos: ${carrito}`)
-        if(consulta === "0"){
-            for (let i = 0; numeroItem < carrito.length; i++) {
-                  numeroItem = carrito.splice(prompt("acanumero"),1);
-                }
-            }
+    alert('Supermecados Luv');
+    articulos = prompt("Ingresa un artículo");
+    carrito.push(articulos);
+    costoUn = parseInt(prompt("Ingresar precio"));
+    cantidad = parseInt(prompt("Ingresar cantidad"));
+    precioTotal = precioTotal + (parseInt(costoUn)*parseInt(cantidad));
+    alert('Monto actual ' + precioTotal);
+    agrego = confirm('Agregar más artículos?');
+    
+}   while(agrego === true){
+    
+        edicion = confirm('Desea cambiar un artículo?');
+        for(let i = 0; i < carrito.length; i++){
+            console.log([i + 1] + ' - ' + carrito[i])
         }
 
-    console.log("xxxxxxxxxxxxxxxx");
-    console.log("ITEMS");
+        if (edicion === true){
+            numeroItem = carrito.splice([prompt("Posicion")-1], 1, prompt("modificacion"));
+            alert(carrito);
 
-    for(let i = 0; i < carrito.length; i++){
-        console.log(" - " + carrito[i])
+            console.log("*****************************");
+            console.log('FACTURA A - Número XXXXXXX-XXXXXXX-X')
+            console.log("ITEMS");
+
+            for(let i = 0; i < carrito.length; i++){
+                console.log(" - " + carrito[i])
+            }
+
+            console.log("Total a facturar: $" + precioTotal)
+            console.log("*****************************");
+            }
+
+            else{
+                console.log("*****************************");
+                console.log('FACTURA A - Número XXXXXXX-XXXXXXX-X')
+                console.log("ITEMS");
+                
+                for(let i = 0; i < carrito.length; i++){
+                    console.log(" - " + carrito[i])
+                }
+                
+                console.log("Total a facturar: $" + precioTotal)
+                console.log("*****************************");
+            }
+        }           
+        
+
+
+/* 
+-----------------------------------------------------------------------------------       
+8) Modificá el ejercicio anterior para que haya un vector que sea "ítems"; otro, "precio por unidad" y el tercero "cantidad comprada".
+a) Al señalar un campo a modificar (ingresado a partir del índice del mismo) debes pedir el nombre del ítem, la cantidad y el precio. Y modificarlos en cada vector.
+b) Cuando ya no se busque modificar alguno de los ítems, se mostrará el resultado final (punto 6 - e)
+
+
+while(ingreso !== "no"){
+    consulta = confirm("desea editar algun articulo?")
+    console.log(Articulos cargados: ${carrito})
+    if(consulta === true){
+        numeroItem = parseInt(prompt("numero de item"));
+        for (let i = 0; numeroItem < carrito.length; i++) {
+
+              numeroItem = carrito.splice(parseInt(prompt("item")),1,prompt("modificacion")); //primer p indica la posicion. segundo cantidad de elementos indice
+            }
+
+        }
+        
     }
-    console.log("Total a facturar: $"+ costoTotal)
-    console.log("xxxxxxxxxxxxxxxxx")
-
-
+    
 */
-
-
-
 
 
